@@ -78,16 +78,13 @@ real source instead of describing it.
 
 ## 3. What the AI got wrong and how we fixed it
 
-Tested component: `frontend/src/App.jsx`.
+| Незрозуміла інструкція про копіювання файлів | ШІ сказав скопіювати package.json і vite.config.js з архіву із заміною. Я неправильно замінив package.json, тому npm install встановив лише старі 63 пакети, а npm test видав помилку Missing script: "test". | Помітив за помилкою і за кількістю пакетів (63 замість приблизно 150). Додав скрипти командою npm pkg set scripts.test="vitest run" і встановив тестові залежності вручну через npm install -D vitest jsdom @testing-library/react. Тепер більше довіряю командам, ніж кроку "скопіюй файл". |
+| Дужки з інструкції вписав буквально | У гайді для гілки було feature/<ім'я>-frontend. Я залишив кутові дужки (<Viktor>), і термінал видав помилку bash: Viktor: No such file or directory, бо розцінив < як перенаправлення. | Гілка не створилася, я побачив помилку. Повторив команду без дужок: git switch -c feature/viktor-frontend. |
+| Команди не збігалися з моєю папкою | ШІ радив cd frontend і git add frontend/..., а я вже був у папці frontend. Вийшла помилка cd: frontend: No such file or directory. | Це виказав git status, де був шлях ../docs/ai-testing.md. Перевірив місце командою pwd і далі виконував git-команди з кореня репозиторію. ШІ не бачить мій термінал, тому шляхи треба перевіряти самому. |
+| Коміти не створилися | Після команд git log показував тільки чужі коміти. | git commit падав з помилкою Author identity unknown. Вказав своє ім'я та пошту через git config --global user.name і user.email, після цього повторив коміти. |
 
-| Problem | How it was found | Fix |
-|---|---|---|
-| **Brittle test**: the first draft asserted `container.firstChild` has class `App`. That checks a CSS detail, and breaks on any harmless refactor. | Human review; confirmed by renaming the class — only this test failed, for a non-functional reason. | Replaced with a test that asserts there is exactly one `<h1>` (an accessibility-relevant rule). |
-| **"Passing" is not "correct"**: all tests were green on the first run, which says nothing about whether they can fail. | Manual *mutation check*: temporarily changed the message text, changed `<h1>` to `<h2>`, renamed the class. | Verified each change made exactly the expected test fail, then restored the code. |
-| **Emoji in the heading**: the heading is `ItStepProject 🚀`; an exact-string match would fail or be fragile. | Reading the component source before accepting the test. | Used a regex on the accessible name: `name: /ItStepProject/`. |
-| **Version compatibility**: the latest Vitest may expect a newer Vite than the project's Vite 5. | Checked `package.json` before installing. | Pinned `vitest@^2`, which fits Vite 5. |
 
-> ✍️ Add your own findings here — real mistakes you hit while working with the AI are the most valuable part of this section.
+Підсумок: більшість проблем були не в самому коді тестів, а навколо нього. ШІ давав на вигляд правильні кроки, але не знав мою папку, мої налаштування git і те, чи файл справді замінився. Тепер після кожного кроку від ШІ я перевіряю результат реальними командами: pwd, git status, git log, npm test.
 
 ## 4. Best practices
 
