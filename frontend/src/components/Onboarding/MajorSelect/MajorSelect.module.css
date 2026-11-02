@@ -1,0 +1,56 @@
+/* ---------- MajorSelect ---------- */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6A7592;
+}
+
+.selectWrapper {
+  position: relative;
+}
+
+.select {
+  width: 100%;
+  padding: 0.8125rem 2.75rem 0.8125rem 1rem;
+  font-size: 1rem;
+  color: var(--color-text-dark);
+  background: var(--color-field-bg);
+  border: 1px solid var(--color-field-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.select:hover {
+  border-color: #d0d5dd;
+}
+
+.select:focus {
+  border-color: var(--color-field-border-focus);
+  box-shadow: 0 0 0 3px rgba(46, 91, 255, 0.15);
+}
+
+.select:invalid {
+  color: #98a2b3; /* placeholder state (no major selected) */
+}
+
+.chevron {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  transform: translateY(-50%);
+  color: #667085;
+  pointer-events: none;
+}
