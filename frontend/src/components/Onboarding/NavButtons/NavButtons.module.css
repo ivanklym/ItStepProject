@@ -1,0 +1,57 @@
+/* ---------- NavButtons ---------- */
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Назад — outline */
+.outline {
+  flex-shrink: 0;
+  color: var(--color-text-dark);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid #d0d5dd;
+}
+
+.outline:hover:not(:disabled) {
+  background: #ffffff;
+  border-color: #98a2b3;
+}
+
+/* Далі — primary, stretched to fill remaining width */
+.primary {
+  flex-grow: 1;
+  color: #ffffff;
+  background: #2455F4;
+  border: 1px solid #2455F4;
+}
+
+.primary:hover:not(:disabled) {
+  background: #1e45c5;
+  border-color: #1e45c5;
+}
+
+.arrow {
+  width: 1.15rem;
+  height: 1.15rem;
+}

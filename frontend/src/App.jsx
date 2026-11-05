@@ -1,14 +1,7 @@
-import Header from './Header/Header';
-import './styles/App.css';
+import Onboarding from './pages/Onboarding';
 
 function App() {
-  return (
-    <div className="App">
-      <Header />
-      <h1>ItStepProject 🚀</h1>
-      <p>Проєкт успішно запущено!</p>
-    </div>
-  );
+  return <Onboarding />;
 }
 
 export default App;

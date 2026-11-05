@@ -1,0 +1,129 @@
+/* ---------- Shared ---------- */
+
+.stepper {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.step {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.stepCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.stepLabel {
+  margin-left: 0.75rem;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s ease, font-weight 0.2s ease;
+}
+
+/* Active step: white filled circle + bold white text */
+.active .stepCircle {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: var(--color-sidebar);
+}
+
+.active .stepLabel {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* Completed step */
+.done .stepCircle {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.85);
+  color: var(--color-sidebar);
+}
+
+/* ---------- Vertical (desktop sidebar) ---------- */
+
+.vertical {
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.vertical .step {
+  align-items: center;
+}
+
+.vertical .step:last-child {
+  padding-bottom: 0;
+}
+
+.vertical .stepLabel {
+  padding-top: 0.55rem;
+}
+
+/* Connecting line between circles */
+.vertical .step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 2.25rem;
+  bottom: 0.25rem;
+  width: 2px;
+  border-radius: 1px;
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateX(-50%);
+}
+
+/* ---------- Horizontal (tablet header banner) ---------- */
+
+.horizontal {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.horizontal .stepCircle {
+  width: 1.75rem;
+  height: 1.75rem;
+  font-size: 0.85rem;
+}
+
+.horizontal .stepLabel {
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+/* Connector between neighbouring items */
+.horizontal .step:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  left: -0.9rem;
+  top: 50%;
+  width: 1.05rem;
+  height: 2px;
+  transform: translateY(-50%);
+  border-radius: 1px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Very narrow table screens: dots line without labels */
+@media (max-width: 880px) {
+  .horizontal .stepLabel {
+    display: none;
+  }
+}
