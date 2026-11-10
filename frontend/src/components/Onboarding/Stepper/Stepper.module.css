@@ -52,9 +52,9 @@
 
 /* Completed step */
 .done .stepCircle {
-  background: rgba(255, 255, 255, 0.85);
-  border-color: rgba(255, 255, 255, 0.85);
-  color: var(--color-sidebar);
+  background: #12b76a;
+  border-color: #12b76a;
+  color: #ffffff;
 }
 
 /* ---------- Vertical (desktop sidebar) ---------- */

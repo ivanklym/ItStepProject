@@ -29,7 +29,7 @@ const Stepper = ({ labels, current = 0, orientation = 'vertical' }) => {
             aria-current={index === current ? 'step' : undefined}
           >
             <span className={styles.stepCircle} aria-hidden="true">
-              {index + 1}
+              {index < current ? '✓' : index + 1}
             </span>
             <span className={styles.stepLabel}>{label}</span>
           </li>
