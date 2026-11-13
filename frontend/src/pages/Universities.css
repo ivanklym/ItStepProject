@@ -1,0 +1,264 @@
+body:has(> #root > .universities) { margin: 0; }
+
+.universities {
+  --universities-ink: #101e36;
+  --universities-muted: #566785;
+  --universities-blue: #005bf5;
+  --universities-line: #e2e8f2;
+  --universities-shadow: 0 10px 24px #17254212;
+  display: grid;
+  grid-template-columns: 248px minmax(0, 1fr);
+  min-height: 100dvh;
+  background: #f3f5fb;
+  color: var(--universities-ink);
+  font: 14px/1.4 var(--font-family, Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif);
+}
+
+.universities *, .universities *::before, .universities *::after { box-sizing: border-box; }
+.universities :is(h1, h2, p, ul, dl, dd) { margin: 0; }
+.universities :is(button, input) { font: inherit; }
+.universities button:not(:disabled) { cursor: pointer; }
+.universities :focus-visible { outline: 2px solid #004ce4; outline-offset: 3px; }
+
+.universities__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 24px 16px;
+  background: white;
+  border-right: 1px solid var(--universities-line);
+}
+
+.universities__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-inline: 8px;
+  color: inherit;
+  font-size: 18px;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.universities__brand span {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0d1e3e, #005bf5);
+  color: white;
+}
+
+.universities nav { display: grid; gap: 4px; }
+.universities nav > * {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: 14px;
+  color: var(--universities-muted);
+  text-decoration: none;
+}
+
+.universities nav [aria-current] { background: #e8efff; color: #004ce4; font-weight: 650; }
+.universities nav [aria-current]::before {
+  position: absolute;
+  left: -16px;
+  width: 4px;
+  height: 22px;
+  border-radius: 0 4px 4px 0;
+  background: var(--universities-blue);
+  content: '';
+}
+
+.universities nav span[aria-hidden] { width: 20px; font-size: 19px; text-align: center; }
+.universities__premium {
+  margin-top: auto;
+  padding: 18px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #101d35, #005bf5);
+  color: white;
+}
+
+.universities__premium p { margin-block: 6px 12px; font-size: 13px; }
+.universities__premium button {
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 9px;
+  background: white;
+  color: #004ce4;
+  font-weight: 600;
+}
+
+.universities__main { min-width: 0; padding: 28px clamp(20px, 2.8vw, 40px); }
+.universities__header, .universities__account { display: flex; gap: 12px; }
+.universities__header { justify-content: space-between; margin-bottom: 24px; }
+.universities__header h1 { font-size: clamp(26px, 2.25vw, 34px); line-height: 1.15; letter-spacing: -.04em; }
+.universities__header p { margin-top: 6px; color: var(--universities-muted); }
+.universities__account > * {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  font-weight: 700;
+}
+
+.universities__notification { position: relative; border: 1px solid var(--universities-line); border-radius: 14px; background: white; }
+.universities__notification::after {
+  position: absolute;
+  top: 12px;
+  right: 13px;
+  width: 8px;
+  height: 8px;
+  border: 1px solid white;
+  border-radius: 50%;
+  background: #f35d51;
+  content: '';
+}
+
+.universities__avatar { border-radius: 50%; background: linear-gradient(135deg, #ffd09c, #ff976f); }
+.universities__search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px 8px 20px;
+  border-radius: 18px;
+  background: white;
+  box-shadow: var(--universities-shadow);
+}
+
+.universities__search > span { color: var(--universities-blue); font-size: 20px; }
+.universities__search input {
+  flex: 1;
+  width: 0;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  color: inherit;
+}
+
+.universities__search input::placeholder { color: var(--universities-muted); }
+.universities__primary {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--universities-blue);
+  box-shadow: 0 6px 14px #005bf530;
+  color: white;
+  font-weight: 650 !important;
+}
+
+.universities__primary:hover { background: #004ac9; }
+.universities__filters { display: flex; flex-wrap: wrap; gap: 8px; margin-block: 14px; }
+.universities__filters button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 5px 16px;
+  border: 1px solid var(--universities-line);
+  border-radius: 999px;
+  background: white;
+  color: var(--universities-muted);
+  font-weight: 600;
+}
+
+.universities__filters [aria-pressed='true'] { border-color: var(--universities-ink); background: var(--universities-ink); color: white; }
+.universities__results { display: grid; grid-template-columns: minmax(0, 15fr) minmax(0, 16fr); align-items: start; gap: 24px; }
+.universities__list { display: grid; gap: 14px; min-width: 0; }
+.universities__card, .universities__details {
+  position: relative;
+  min-width: 0;
+  padding: 19px;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  background: white;
+  box-shadow: var(--universities-shadow);
+}
+
+.universities__card[data-selected='true'] { border-color: var(--universities-blue); box-shadow: 0 0 0 1px var(--universities-blue); }
+.universities__select { position: absolute; inset: 0; border: 0; border-radius: inherit; background: transparent; }
+.universities__identity, .universities__details-heading { display: flex; align-items: center; gap: 14px; }
+.universities__identity h2 { font-size: 17px; line-height: 1.2; }
+.universities__identity p, .universities__details-heading p { color: var(--universities-muted); font-size: 13px; }
+.universities__monogram {
+  display: grid;
+  flex: 0 0 54px;
+  height: 54px;
+  place-items: center;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #005bf5, #5480ff);
+  color: white;
+  font-size: 23px;
+  font-weight: 750;
+}
+
+.universities__monogram--riverton { background: linear-gradient(135deg, #f26914, #ffb171); }
+.universities__monogram--harborside { background: linear-gradient(135deg, #743bf0, #ad88fa); }
+.universities__favorite {
+  position: relative;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  margin-left: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: #556e9d;
+  font-size: 22px !important;
+}
+
+.universities__favorite[aria-pressed='true'] { color: var(--universities-blue); }
+.universities__card-match { display: flex; align-items: center; gap: 10px; margin-block: 14px; color: var(--universities-muted); font-size: 12px; }
+.universities__category { margin-right: auto; padding: 4px 12px; border-radius: 999px; background: #dde7ff; color: #1446ad; font-weight: 700; }
+.universities__category[data-category='Reach'] { background: #ffedc3; color: #704705; }
+.universities__ring {
+  display: grid;
+  flex: 0 0 auto;
+  width: 44px;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background: conic-gradient(from 35deg, #dce5fb 0 calc(100% - var(--match)), #7296ff 0, #005bf5 100%);
+  color: var(--universities-ink);
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.universities__ring > span { display: grid; width: calc(100% - 9px); aspect-ratio: 1; place-items: center; border-radius: 50%; background: white; }
+.universities__facts { display: flex; justify-content: space-between; gap: 8px; padding-top: 12px; border-top: 1px dashed var(--universities-line); }
+.universities__facts dt { color: var(--universities-muted); font-size: 12px; }
+.universities__facts dd { font-weight: 700; }
+.universities__details-heading .universities__ring { width: 82px; font-size: 21px; }
+.universities__details-heading h2 { font-size: 21px; letter-spacing: -.03em; }
+.universities__criteria { display: grid; gap: 8px; margin-block: 18px !important; padding: 0; list-style: none; }
+.universities__criteria li { display: grid; grid-template-columns: minmax(92px, 1fr) minmax(0, 2.5fr) 2ch; align-items: center; gap: 12px; font-size: 13px; }
+.universities__criteria progress { display: block; width: 100%; height: 7px; overflow: hidden; appearance: none; border: 0; border-radius: 999px; background: var(--universities-line); }
+.universities__criteria progress::-webkit-progress-bar { background: var(--universities-line); }
+.universities__criteria progress::-webkit-progress-value { border-radius: 999px; background: linear-gradient(90deg, #005bf5, #548bff); }
+.universities__criteria progress::-moz-progress-bar { border-radius: 999px; background: linear-gradient(90deg, #005bf5, #548bff); }
+.universities__details > button { width: 100%; }
+.universities__dialog { width: min(420px, calc(100% - 32px)); padding: 24px; border: 0; border-radius: 20px; color: inherit; }
+.universities__dialog::backdrop { background: #101e3670; }
+.universities__dialog .universities__facts { margin-block: 16px; }
+
+@media (max-width: 1024px) {
+  .universities { grid-template-columns: 176px minmax(0, 1fr); }
+  .universities__results { gap: 16px; }
+  .universities__card, .universities__details { padding: 14px; }
+}
+
+@media (max-width: 1024px) and (orientation: portrait), (max-width: 768px) {
+  .universities { grid-template-columns: minmax(0, 1fr); }
+  .universities__sidebar { gap: 10px; padding: 12px 16px; border-right: 0; border-bottom: 1px solid var(--universities-line); }
+  .universities nav { display: flex; flex-wrap: wrap; gap: 4px; }
+  .universities nav > * { gap: 6px; padding-inline: 10px; }
+  .universities nav [aria-current]::before, .universities__premium { display: none; }
+  .universities__main { padding: 20px 16px 28px; }
+  .universities__results { grid-template-columns: minmax(0, 1fr); }
+}

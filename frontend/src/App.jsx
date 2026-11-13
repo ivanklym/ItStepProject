@@ -1,9 +1,14 @@
 import React from 'react';
 import Header from './Header/Header';
 import SignUp from './SignUp/SignUp';
+import Universities from './pages/Universities';
 
 function App() {
   const path = window.location.pathname;
+
+  if (path === '/universities' || path === '/universities/') {
+    return <Universities />;
+  }
 
   return (
     <div>
