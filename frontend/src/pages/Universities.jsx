@@ -24,6 +24,7 @@ const universities = [
 const navigation = [
   ['⌂', 'Home', '/'],
   ['⚲', 'Universities', '/universities'],
+  ['⇄', 'Compare', '/compare'],
   ['✧', 'AI Counselor'],
   ['☑', 'Applications'],
   ['♙', 'Profile'],
