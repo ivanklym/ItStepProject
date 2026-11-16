@@ -1,0 +1,82 @@
+/* ---------- AcademicForm ---------- */
+
+.formSection {
+  max-width: 44rem;
+  width: 100%;
+}
+
+.stepIndicator {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text-dark);
+  line-height: 1.2;
+}
+
+.subtitle {
+  margin: 0.5rem 0 2rem;
+  font-size: 1rem;
+  color: var(--color-text-gray);
+}
+
+/* Fields grid: full width for the major, 2 columns for scores */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem 1.5rem;
+}
+
+.fullWidth {
+  grid-column: 1 / -1;
+}
+
+/* English test type selector, inline with the field label */
+.testType {
+  padding: 0.25rem 1.75rem 0.25rem 0.625rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  background: rgba(46, 91, 255, 0.08);
+  border: 1px solid rgba(46, 91, 255, 0.25);
+  border-radius: 999px;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.testType:hover {
+  background: rgba(46, 91, 255, 0.14);
+}
+
+.testType:focus {
+  box-shadow: 0 0 0 3px rgba(46, 91, 255, 0.15);
+}
+
+/* Action buttons row spans the full grid width */
+.navRow {
+  grid-column: 1 / -1;
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 1024px) {
+  .title {
+    font-size: 1.6rem;
+  }
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

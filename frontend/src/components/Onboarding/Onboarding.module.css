@@ -1,0 +1,32 @@
+/* =============================
+   Onboarding Page-level styles
+   ============================= */
+
+.layout {
+  display: grid;
+  grid-template-columns: 35% 65%;
+  min-height: 100vh;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3.5rem 2.5rem 4rem;
+  background: var(--color-bg-light);
+  overflow-y: auto;
+}
+
+/* ---------- Tablet: single-column vertical layout ---------- */
+
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .main {
+    align-items: flex-start;
+    padding: 2rem 1.75rem 3rem;
+  }
+}

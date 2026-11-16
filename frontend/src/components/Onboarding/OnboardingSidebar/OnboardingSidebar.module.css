@@ -1,0 +1,128 @@
+/* ---------- OnboardingSidebar ---------- */
+
+/* Sidebar with gradient background */
+.sidebar {
+  background: linear-gradient(135deg, #0E1A33 0%, #1B3A8F 58%, #2455F4 100%);
+  color: #ffffff;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative circle overlay in sidebar background - ring/donut with hole in center */
+.sidebar::before {
+  content: '';
+  position: absolute;
+  top: -10rem;
+  right: -10rem;
+  width: 28rem;
+  height: 28rem;
+  border: 2.5rem solid rgba(255, 255, 255, 0.06);
+  border-radius: 50%;
+  background: transparent;
+  z-index: 0;
+}
+
+/* Inner column - sticky sidebar */
+.inner {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 2.5rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Logo section - no gradient on section itself */
+.logoSection {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 4rem;
+}
+
+/* Circular gradient background behind star icon only */
+.logoStarWrapper {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0E1A33 0%, #1B3A8F 58%, #2455F4 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Star icon */
+.logoStar {
+  width: 1rem;
+  height: 1rem;
+  fill: #ffffff;
+}
+
+/* Logo text */
+.logoText {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+
+/* Vertical stepper wrapper - shown on desktop */
+.stepperWrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 0.25rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Horizontal stepper mobile wrapper - hidden on desktop, shown on tablet */
+.stepperMobileWrapper {
+  display: none;
+}
+
+/* ---------- Tablet: compact horizontal header banner ---------- */
+
+@media (max-width: 1024px) {
+  .sidebar {
+    min-height: 0;
+  }
+
+  .inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    min-height: 0;
+    padding: 1rem 1.5rem;
+    position: static;
+  }
+
+  .logoSection {
+    margin-bottom: 0;
+  }
+
+  .logoText {
+    font-size: 1rem;
+  }
+
+  /* On tablet: hide vertical, show horizontal stepper */
+  .stepperWrapper {
+    display: none;
+  }
+
+  .stepperMobileWrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  /* Save vertical space on tablet */
+  .hint {
+    display: none;
+  }
+}
