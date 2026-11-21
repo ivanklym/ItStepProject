@@ -10,8 +10,11 @@ export const STEP_LABELS = ['Академічна база', 'Activities', 'По
 /**
  * Onboarding flow — step 1: Academic Base, step 2: Activities.
  * Step 3 is a placeholder for now.
+ *
+ * @param {Object}   props
+ * @param {Function} [props.onComplete]  Called when "Далі" is pressed on the last step.
  */
-const Onboarding = () => {
+const Onboarding = ({ onComplete }) => {
   const [step, setStep] = useState(0); // zero-based index into STEP_LABELS
   const [fields, setFields] = useState(DEFAULT_VALUES);
   const [activities, setActivities] = useState(DEFAULT_ACTIVITIES);
@@ -25,7 +28,13 @@ const Onboarding = () => {
   };
 
   const goBack = () => setStep((current) => Math.max(0, current - 1));
-  const goNext = () => setStep((current) => Math.min(STEP_LABELS.length - 1, current + 1));
+  const goNext = () => {
+    if (step >= STEP_LABELS.length - 1) {
+      onComplete?.();
+      return;
+    }
+    setStep((current) => current + 1);
+  };
 
   return (
     <div className={styles.layout}>
