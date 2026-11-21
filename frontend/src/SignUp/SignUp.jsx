@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { ROUTES } from '../routes';
 import styles from './SignUp.module.css';
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState('Leo');
   const [email, setEmail] = useState('leo@example.com');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    navigate(ROUTES.onboarding);
   };
 
   return (
@@ -93,7 +97,7 @@ const SignUp = () => {
           </form>
 
           <div className={styles.footerLink}>
-            <a href="/signin">Вже є акаунт? Увійти</a>
+            <Link to={ROUTES.signIn}>Вже є акаунт? Увійти</Link>
           </div>
         </div>
       </div>
