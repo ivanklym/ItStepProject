@@ -1,25 +1,26 @@
-import React from 'react';
-import Header from './Header/Header';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { ROUTES } from './routes';
 import SignUp from './SignUp/SignUp';
+import SignIn from './SignIn/SignIn';
+import Onboarding from './pages/Onboarding';
+import Dashboard from './pages/Dashboard';
+
+// Router-aware wrapper: the Onboarding page itself stays router-free.
+function OnboardingPage() {
+  const navigate = useNavigate();
+  return <Onboarding onComplete={() => navigate(ROUTES.dashboard)} />;
+}
 
 function App() {
-  const path = window.location.pathname;
-
   return (
-    <div>
-      {path === '/signup' ? (
-        <SignUp />
-      ) : (
-        <>
-          <Header />
-          <div style={{ padding: '40px' }}>
-            <h1>ItStepProject 🚀</h1>
-            <p>Проєкт успішно запущено!</p>
-            <p>Перейдіть на <a href="/signup">/signup</a>, щоб переглянути сторінку реєстрації.</p>
-          </div>
-        </>
-      )}
-    </div>
+    <Routes>
+      <Route path="/" element={<Navigate to={ROUTES.signUp} replace />} />
+      <Route path={ROUTES.signUp} element={<SignUp />} />
+      <Route path={ROUTES.signIn} element={<SignIn />} />
+      <Route path={ROUTES.onboarding} element={<OnboardingPage />} />
+      <Route path={ROUTES.dashboard} element={<Dashboard />} />
+      <Route path="*" element={<Navigate to={ROUTES.signUp} replace />} />
+    </Routes>
   );
 }
 
