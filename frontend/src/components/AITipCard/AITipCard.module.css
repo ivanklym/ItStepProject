@@ -1,0 +1,81 @@
+.aiCard {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  min-height: 0;
+  padding: 1.05rem 1.15rem;
+  overflow: hidden;
+  color: #ffffff;
+  background: linear-gradient(140deg, #0d2357 0%, #123b91 64%, #1e54d8 100%);
+  border-radius: 1.05rem;
+  box-shadow: 0 0.9rem 1.8rem rgba(15, 42, 110, 0.18);
+}
+
+.aiCard::after {
+  position: absolute;
+  top: -4rem;
+  right: -3rem;
+  z-index: -1;
+  width: 9rem;
+  height: 9rem;
+  background: radial-gradient(circle, rgba(93, 140, 255, 0.45), rgba(93, 140, 255, 0) 70%);
+  border-radius: 50%;
+  content: '';
+}
+
+.aiIcon {
+  display: grid;
+  width: 1.6rem;
+  height: 1.6rem;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 0.45rem;
+  place-items: center;
+}
+
+.aiTitle {
+  margin: 0.45rem 0 0;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.aiText {
+  margin: 0.3rem 0 0;
+  color: rgba(204, 218, 248, 0.87);
+  font-size: 0.7rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 960px) {
+  .aiCard {
+    flex: none;
+    min-height: 9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .aiCard {
+    min-height: 8.4rem;
+    padding: 0.95rem 1rem;
+    border-radius: 0.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .aiCard {
+    min-height: 0;
+  }
+
+  .aiTitle {
+    font-size: 0.95rem;
+  }
+
+  .aiText {
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+}

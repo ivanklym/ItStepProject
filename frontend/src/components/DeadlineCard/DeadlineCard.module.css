@@ -1,0 +1,101 @@
+.deadlineCard {
+  display: flex;
+  flex: 1.1 1 0;
+  flex-direction: column;
+  min-height: 0;
+  padding: 1.1rem 1.2rem;
+  background: #ffffff;
+  border: 1px solid var(--db-line, #e9edf5);
+  border-radius: 1.05rem;
+  box-shadow: 0 0.55rem 1.4rem rgba(21, 42, 86, 0.05);
+}
+
+.deadlineIcon {
+  display: grid;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #2f63f0;
+  place-items: center;
+}
+
+.deadlineTitle {
+  margin: 0.5rem 0 0;
+  color: #101828;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.deadlineMeta {
+  margin: 0.22rem 0 0;
+  color: #818ba0;
+  font-size: 0.71rem;
+  line-height: 1.4;
+}
+
+.deadlineRow {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding-top: 0.55rem;
+  margin-top: auto;
+}
+
+.deadlineDate {
+  color: #111b33;
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.daysBadge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.3rem;
+  padding: 0 0.45rem;
+  color: #9a6c14;
+  font-size: 0.63rem;
+  font-weight: 600;
+  white-space: nowrap;
+  background: #fff1c7;
+  border-radius: 999px;
+}
+
+@media (max-width: 960px) {
+  .deadlineCard {
+    flex: none;
+    min-height: 9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .deadlineCard {
+    min-height: 8.4rem;
+    padding: 0.95rem 1rem;
+    border-radius: 0.9rem;
+  }
+
+  .deadlineDate {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .deadlineCard {
+    min-height: 0;
+    padding-bottom: 1.1rem;
+  }
+
+  .deadlineTitle {
+    font-size: 0.96rem;
+  }
+
+  .deadlineMeta {
+    font-size: 0.78rem;
+  }
+
+  .daysBadge {
+    font-size: 0.68rem;
+  }
+}

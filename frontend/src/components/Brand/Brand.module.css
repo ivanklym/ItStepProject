@@ -1,0 +1,51 @@
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: fit-content;
+  color: var(--db-ink, #101828);
+  text-decoration: none;
+  border-radius: 0.9rem;
+}
+
+.mark {
+  display: grid;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #ffffff;
+  background: var(--db-navy, #0b1736);
+  border-radius: 0.8rem;
+  box-shadow: 0 0.55rem 1.1rem rgba(11, 23, 54, 0.2);
+  place-items: center;
+}
+
+.name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+}
+
+.compact {
+  gap: 0.6rem;
+  min-height: 2.75rem;
+}
+
+.compact .mark {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 0.75rem;
+}
+
+.compact .name {
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .compact .name {
+    font-size: 0.95rem;
+  }
+}
+
+
