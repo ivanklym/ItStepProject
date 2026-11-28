@@ -1,0 +1,215 @@
+.profileCard {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  padding: 1.15rem 1.25rem 1.2rem;
+  overflow: hidden;
+  color: #ffffff;
+  background: linear-gradient(132deg, #173a92 0%, #1a4bd0 48%, #0c2a78 100%);
+  border-radius: 1.15rem;
+  box-shadow: 0 1.1rem 2.2rem rgba(20, 55, 157, 0.23);
+}
+
+.profileCard::before,
+.profileCard::after {
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+  content: '';
+}
+
+.profileCard::before {
+  top: -9rem;
+  right: -11rem;
+  width: 24rem;
+  height: 24rem;
+  border: 0.9rem solid rgba(255, 255, 255, 0.045);
+}
+
+.profileCard::after {
+  right: -4rem;
+  bottom: -9rem;
+  width: 19rem;
+  height: 19rem;
+  background: radial-gradient(circle at 30% 30%, rgba(99, 146, 255, 0.35), rgba(99, 146, 255, 0) 68%);
+}
+
+.profileTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.profileKicker {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.93);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+.editButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.2rem;
+  padding: 0 0.9rem;
+  color: #ffffff;
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 0.55rem;
+  backdrop-filter: blur(4px);
+  transition: background-color 0.18s ease;
+}
+
+@media (hover: hover) {
+  .editButton:hover {
+    background: rgba(255, 255, 255, 0.22);
+  }
+}
+
+.profileMain {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.95rem;
+}
+
+.strengthCopy {
+  min-width: 0;
+}
+
+.strengthTitle {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.18rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.strengthHint {
+  margin: 0.32rem 0 0;
+  color: rgba(201, 215, 247, 0.86);
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin: 1.1rem 0 0;
+}
+
+.metric {
+  min-width: 0;
+  padding: 0.55rem 0.65rem 0.6rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.6rem;
+}
+
+.metric dt {
+  margin: 0;
+  overflow: hidden;
+  color: rgba(197, 213, 245, 0.82);
+  font-size: 0.65rem;
+  font-weight: 400;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.metric dd {
+  margin: 0.28rem 0 0;
+  color: #ffffff;
+  font-size: 1.02rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+@media (max-width: 1400px) {
+  .metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1280px) {
+  .editButton {
+    min-height: 2.75rem;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .profileCard {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .profileMain {
+    gap: 0.8rem;
+  }
+
+  .strengthTitle {
+    font-size: 1.06rem;
+  }
+
+  .strengthHint {
+    font-size: 0.69rem;
+  }
+
+  .metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.45rem;
+    margin-top: 0.9rem;
+  }
+
+  .metric {
+    padding: 0.5rem 0.55rem 0.55rem;
+  }
+
+  .metric dd {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .profileKicker {
+    font-size: 0.9rem;
+  }
+
+  .strengthHint {
+    font-size: 0.75rem;
+  }
+
+  .metric dt {
+    font-size: 0.7rem;
+  }
+
+  .metric dd {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .profileMain {
+    align-items: flex-start;
+  }
+
+  .strengthTitle {
+    font-size: 1rem;
+  }
+}

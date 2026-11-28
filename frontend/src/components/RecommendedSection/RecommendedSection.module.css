@@ -1,0 +1,139 @@
+.recommended {
+  min-width: 0;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.sectionTitle {
+  margin: 0;
+  color: #111b33;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.seeAll {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.2rem;
+  padding: 0 0.35rem;
+  color: var(--db-blue, #2455f4);
+  font-family: inherit;
+  font-size: 0.74rem;
+  font-weight: 600;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .seeAll:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.55rem;
+  padding: 0.1rem 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.filters::-webkit-scrollbar {
+  display: none;
+}
+
+.filterButton {
+  flex: 0 0 auto;
+  min-height: 2.35rem;
+  padding: 0 1rem;
+  color: #5e687a;
+  font-family: inherit;
+  font-size: 0.74rem;
+  font-weight: 500;
+  white-space: nowrap;
+  background: #ffffff;
+  border: 1px solid #e7ebf2;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+@media (hover: hover) {
+  .filterButton:hover {
+    color: #18233c;
+    border-color: #cfd9ee;
+  }
+}
+
+.filterButtonActive,
+.filterButtonActive:hover {
+  color: #ffffff;
+  background: #111c33;
+  border-color: #111c33;
+}
+
+.universityGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-top: 0.8rem;
+}
+
+@media (max-width: 1280px) {
+  .seeAll {
+    min-height: 2.75rem;
+  }
+
+  .filterButton {
+    min-height: 2.75rem;
+    padding: 0 1.15rem;
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 1.03rem;
+  }
+
+  .filters {
+    margin-top: 0.45rem;
+  }
+
+  .universityGrid {
+    gap: 0.7rem;
+    margin-top: 0.7rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .sectionTitle {
+    font-size: 1.12rem;
+  }
+
+  .seeAll {
+    font-size: 0.8rem;
+  }
+
+  .filterButton {
+    padding: 0 1.05rem;
+    font-size: 0.8rem;
+  }
+
+  .universityGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

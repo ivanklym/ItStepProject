@@ -1,0 +1,25 @@
+.ring {
+  position: relative;
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+}
+
+.ring svg {
+  position: absolute;
+  inset: 0;
+}
+
+.value {
+  position: relative;
+  color: inherit;
+  font-size: 1.32rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.match .value {
+  font-size: 0.63rem;
+  letter-spacing: -0.03em;
+}

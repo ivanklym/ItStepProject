@@ -1,94 +1,484 @@
+/* =========================================================
+   US Match — dashboard page shell
+   Cards and navigation live in src/components and own their CSS.
+   ========================================================= */
+
 .page {
+  --db-ink: #101828;
+  --db-ink-soft: #344054;
+  --db-muted: #7b8497;
+  --db-line: #e9edf5;
+  --db-blue: #2455f4;
+  --db-navy: #0b1736;
+
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
   min-height: 100vh;
-  background: var(--color-bg-light);
+  padding: 1.5rem;
+  color: var(--db-ink);
+  font-family: var(--font-family);
+  background:
+    radial-gradient(70rem 34rem at 12% -10%, #fbfcff 0%, rgba(251, 252, 255, 0) 60%),
+    #e9edf5;
+}
+
+.page *,
+.page *::before,
+.page *::after {
+  box-sizing: border-box;
+}
+
+.page :is(button, a):focus-visible {
+  outline: 2px solid var(--db-blue);
+  outline-offset: 3px;
+}
+
+.page button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: 15.75rem minmax(0, 1fr);
+  width: 100%;
+  min-height: calc(100vh - 3rem);
+  overflow: hidden;
+  background: #ffffff;
+  border-radius: 1.5rem;
+  box-shadow:
+    0 1.75rem 4.5rem rgba(18, 34, 68, 0.14),
+    0 0.1rem 0.35rem rgba(18, 34, 68, 0.05);
+}
+
+/* ---------- Content shell ---------- */
+
+.contentColumn {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: linear-gradient(180deg, #f8faff 0%, #f5f7fc 100%);
+}
+
+.tabletBar {
+  display: none;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: 1.7rem 1.9rem 2.2rem;
 }
 
 .topbar {
   display: flex;
+  align-items: flex-start;
   justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2.5rem;
-  background: var(--color-sidebar);
-  color: #ffffff;
-}
-
-.logo {
-  font-weight: 700;
-  font-size: 1.125rem;
-}
-
-.logoIcon {
-  color: var(--color-accent);
-  margin-right: 0.25rem;
-}
-
-.logout {
-  color: var(--color-text-muted);
-  text-decoration: none;
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-.logout:hover {
-  color: #ffffff;
-}
-
-.main {
-  max-width: 64rem;
-  margin: 0 auto;
-  padding: 3.5rem 2.5rem 4rem;
-}
-
-.title {
-  margin: 0 0 0.5rem;
-  font-size: 2rem;
-  color: var(--color-text-dark);
-}
-
-.subtitle {
-  margin: 0 0 2rem;
-  color: var(--color-text-gray);
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
   gap: 1.25rem;
 }
 
-.card {
-  padding: 1.5rem;
-  background: var(--color-field-bg);
-  border: 1px solid var(--color-field-border);
-  border-radius: var(--radius-lg);
+.greeting {
+  margin: 0;
+  color: #0d1730;
+  font-family: inherit;
+  font-size: clamp(1.8rem, 2.35vw, 2.05rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
 }
 
-.cardTitle {
-  margin: 0 0 0.25rem;
-  font-size: 1.25rem;
-  color: var(--color-text-dark);
+.subtitle {
+  margin: 0.45rem 0 0;
+  color: var(--db-muted);
+  font-size: 0.8rem;
+  line-height: 1.4;
 }
 
-.cardHint {
-  margin: 0 0 1rem;
-  color: var(--color-text-gray);
-  font-size: 0.875rem;
+.topActions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding-top: 0.15rem;
 }
 
-.badge {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  border-radius: 999px;
-  background: var(--color-bg-light);
-  color: var(--color-accent);
-  font-size: 0.75rem;
-  font-weight: 600;
+.iconButton {
+  position: relative;
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  color: #344054;
+  background: #ffffff;
+  border: 1px solid #e7ecf4;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0.35rem 0.9rem rgba(20, 36, 70, 0.05);
+  place-items: center;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
-@media (max-width: 48rem) {
-  .topbar,
+@media (hover: hover) {
+  .iconButton:hover {
+    box-shadow: 0 0.55rem 1.2rem rgba(20, 36, 70, 0.09);
+    transform: translateY(-1px);
+  }
+}
+
+.notificationDot {
+  position: absolute;
+  top: 0.58rem;
+  right: 0.6rem;
+  width: 0.42rem;
+  height: 0.42rem;
+  background: #f04438;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #ffffff;
+}
+
+.avatar {
+  width: 2.75rem;
+  height: 2.75rem;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  background: linear-gradient(140deg, #ffb083, #ff8a57);
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0.35rem 0.9rem rgba(255, 138, 87, 0.22);
+  transition: transform 0.18s ease;
+}
+
+@media (hover: hover) {
+  .avatar:hover {
+    transform: translateY(-1px);
+  }
+}
+
+/* ---------- Dashboard grid ---------- */
+
+.dashboard {
+  display: grid;
+  grid-template-areas:
+    'profile side'
+    'recommended side';
+  grid-template-columns: minmax(0, 1fr) 21rem;
+  gap: 1.45rem 1rem;
+  align-items: start;
+  margin-top: 1.5rem;
+}
+
+.profileSlot {
+  grid-area: profile;
+}
+
+.recommended {
+  grid-area: recommended;
+  min-width: 0;
+}
+
+.sideColumn {
+  display: flex;
+  flex-direction: column;
+  grid-area: side;
+  gap: 0.85rem;
+  min-height: 18.2rem;
+  align-self: start;
+}
+
+/* ---------- Feedback toast ---------- */
+
+.toast {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 100;
+  max-width: min(22rem, calc(100vw - 2rem));
+  padding: 0.8rem 1rem;
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.35;
+  background: #0d1a36;
+  border-radius: 0.75rem;
+  box-shadow: 0 1rem 2rem rgba(8, 20, 48, 0.3);
+  animation: toast-in 0.22s ease-out;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   Tablet — landscape and portrait (≤1280px)
+   ========================================================= */
+
+@media (max-width: 1280px) {
+  .page {
+    padding: 0;
+    background: #f5f7fc;
+  }
+
+  .shell {
+    display: block;
+    max-width: none;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: visible;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .tabletBar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1.4rem;
+    background: rgba(255, 255, 255, 0.94);
+    border-bottom: 1px solid var(--db-line);
+    backdrop-filter: blur(14px);
+  }
+
+  .tabletBrand {
+    flex-shrink: 0;
+  }
+
+  .tabletNav {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .tabletNavList {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    list-style: none;
+  }
+
+  .tabletNavList::-webkit-scrollbar {
+    display: none;
+  }
+
+  .upgradePill {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: 0 1.1rem;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+    background: linear-gradient(135deg, #1e4bd2, #173a9f);
+    border: 0;
+    border-radius: 0.7rem;
+    cursor: pointer;
+    box-shadow: 0 0.45rem 1.1rem rgba(28, 66, 180, 0.22);
+  }
+
+  .contentColumn {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
   .main {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding: 1.45rem 1.5rem 2.4rem;
+  }
+
+  .topbar {
+    align-items: center;
+  }
+
+  .greeting {
+    font-size: clamp(1.65rem, 3.2vw, 1.9rem);
+  }
+
+  .dashboard {
+    grid-template-columns: minmax(0, 1fr) 20rem;
+  }
+}
+
+/* 1024px tuning: slightly tighter gutters and priority column */
+@media (max-width: 1024px) {
+  .main {
+    padding: 1.3rem 1.4rem 2.2rem;
+  }
+
+  .dashboard {
+    grid-template-columns: minmax(0, 1fr) 19rem;
+  }
+}
+
+/* Narrow tablet / large phone: nav gets its own scrollable row */
+@media (max-width: 960px) {
+  .tabletBar {
+    flex-wrap: wrap;
+    row-gap: 0.55rem;
+    padding: 0.65rem 1.25rem 0.7rem;
+  }
+
+  .tabletBrand {
+    order: 1;
+  }
+
+  .upgradePill {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .tabletNav {
+    flex-basis: 100%;
+    order: 3;
+  }
+
+  .dashboard {
+    grid-template-areas:
+      'profile'
+      'side'
+      'recommended';
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+
+  .sideColumn {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+    min-height: 0;
+  }
+}
+
+/* Tablet portrait (≤768px) */
+@media (max-width: 768px) {
+  .tabletBar {
+    gap: 0.6rem 0.75rem;
+    padding: 0.6rem 1rem 0.65rem;
+  }
+
+  .upgradePill {
+    min-height: 2.75rem;
+    padding: 0 0.95rem;
+  }
+
+  .main {
+    padding: 1.15rem 1rem 2rem;
+  }
+
+  .topbar {
+    gap: 0.75rem;
+  }
+
+  .greeting {
+    font-size: 1.6rem;
+  }
+
+  .subtitle {
+    max-width: 17rem;
+    font-size: 0.76rem;
+  }
+
+  .topActions {
+    gap: 0.5rem;
+  }
+
+  .iconButton,
+  .avatar {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .dashboard {
+    gap: 1.1rem;
+    margin-top: 1.2rem;
+  }
+
+  .toast {
+    right: 1rem;
+    bottom: 1rem;
+  }
+}
+
+/* =========================================================
+   Smartphone (≤600px) — covers 360–440px viewports:
+   Galaxy A55 (384), Pixel 9 Pro (427), iPhone 16 Pro Max (440)
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .tabletBar {
+    padding: 0.6rem 0.95rem 0.65rem;
+  }
+
+  .main {
+    padding: 1rem 0.95rem 2rem;
+  }
+
+  .subtitle {
+    font-size: 0.82rem;
+  }
+
+  .dashboard {
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .sideColumn {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .toast {
+    right: 0.95rem;
+    bottom: 0.95rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page *,
+  .page *::before,
+  .page *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Keep the sticky bar and content clear of notches and gesture areas. */
+@media (max-width: 960px) {
+  @supports (padding: max(0px)) {
+    .tabletBar {
+      padding-top: max(0.6rem, env(safe-area-inset-top));
+      padding-right: max(1rem, env(safe-area-inset-right));
+      padding-left: max(1rem, env(safe-area-inset-left));
+    }
+
+    .main {
+      padding-right: max(0.95rem, env(safe-area-inset-right));
+      padding-left: max(0.95rem, env(safe-area-inset-left));
+      padding-bottom: max(2rem, env(safe-area-inset-bottom));
+    }
+
+    .toast {
+      right: max(0.95rem, env(safe-area-inset-right));
+      bottom: max(0.95rem, env(safe-area-inset-bottom));
+    }
   }
 }
